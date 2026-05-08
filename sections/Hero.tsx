@@ -8,8 +8,6 @@ const CountUpNumber = ({ value, suffix = "", delay = 0 }: { value: number; suffi
   const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {
-    // Start the animation after the specified delay
-    // This ensures it synchronizes perfectly with the section's reveal animation
     const timer = setTimeout(() => {
       const controls = animate(0, value, {
         duration: 2.5,
@@ -18,7 +16,6 @@ const CountUpNumber = ({ value, suffix = "", delay = 0 }: { value: number; suffi
       });
       return () => controls.stop();
     }, delay * 1000);
-
     return () => clearTimeout(timer);
   }, [value, delay]);
 
@@ -33,15 +30,15 @@ const Hero = () => {
     offset: ["start start", "end start"],
   });
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
 
   const revealVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: (custom: number) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, delay: custom, ease: "easeOut" }
+      transition: { duration: 1, delay: custom, ease: [0.76, 0, 0.24, 1] }
     })
   };
 
@@ -50,7 +47,7 @@ const Hero = () => {
     visible: (custom: number) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 1, delay: custom, ease: [0.76, 0, 0.24, 1] }
+      transition: { duration: 1.2, delay: custom, ease: [0.76, 0, 0.24, 1] }
     })
   };
 
@@ -59,35 +56,52 @@ const Hero = () => {
       ref={heroRef}
       className="relative min-h-screen bg-black text-white font-sans overflow-hidden"
     >
-      {/* Parallax Background Image */}
+      {/* THE FIX: The layoutId wrapper handles the expansion morph. 
+        The parallax logic goes ON the image inside it to prevent lag. 
+      */}
       <motion.div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ 
-          y: backgroundY,
-          backgroundImage: 'linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%), url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2940&auto=format&fit=crop")',
-          height: "120%", 
-          top: "-10%" 
-        }}
-      />
+        layoutId="hero-background"
+        className="absolute inset-0 z-0 overflow-hidden bg-black"
+        transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1] }}
+      >
+        <motion.img 
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2940&auto=format&fit=crop"
+          alt="Hero Background"
+          className="absolute inset-0 w-full h-[120%] object-cover -top-[10%]"
+          style={{ y: backgroundY }} 
+        />
+        {/* Overlay fades in AFTER expansion so it doesn't darken the loading screen */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 1.2 }}
+          className="absolute inset-0"
+          style={{
+             backgroundImage: 'linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%)'
+          }}
+        />
+      </motion.div>
 
-      {/* Main Hero Content with Parallax Text */}
+      {/* Main Hero Content (Your original layout) */}
       <motion.main 
         style={{ y: textY }}
+        initial="hidden"
+        animate="visible"
         className="relative z-10 flex flex-col justify-center h-screen px-12 lg:px-24 max-w-5xl"
       >
         <motion.p 
           variants={revealVariants}
-          custom={0.1}
+          custom={0.8}
           className="text-[10px] tracking-[0.4em] text-gray-400 mb-8 uppercase font-bold"
         >
           Commercial Construction<br />
           & Facility Management
         </motion.p>
 
-        <div className="overflow-hidden mb-10">
+        <div className="overflow-hidden mb-10 pt-2">
           <motion.h1 
             variants={titleVariants}
-            custom={0.2}
+            custom={0.9}
             className="text-6xl md:text-[5.5rem] leading-[1.05] font-light tracking-tight"
           >
             SPACES<br />
@@ -98,7 +112,7 @@ const Hero = () => {
 
         <motion.p 
           variants={revealVariants}
-          custom={0.4}
+          custom={1.1}
           className="text-gray-300 max-w-md text-sm md:text-base leading-relaxed mb-14 font-medium opacity-80"
         >
           We build high-performance spaces and manage facilities that empower people, elevate businesses, and transform communities.
@@ -106,7 +120,7 @@ const Hero = () => {
 
         <motion.a 
           variants={revealVariants}
-          custom={0.5}
+          custom={1.2}
           href="#" 
           data-cursor-hover
           data-cursor-text="EXPLORE"
@@ -122,47 +136,31 @@ const Hero = () => {
         </motion.a>
       </motion.main>
 
-      {/* Repositioned Scroll Indicator */}
+      {/* Bottom Right Stats Box */}
       <motion.div 
+        initial="hidden"
+        animate="visible"
         variants={revealVariants}
-        custom={0.8}
-        className="absolute bottom-12 left-10 z-20 flex flex-col items-center gap-8"
-      >
-        <div className="flex flex-col items-center gap-6">
-          <div className="w-[1px] h-20 bg-gradient-to-b from-white/40 to-transparent relative overflow-hidden">
-            <motion.div 
-              animate={{ y: [0, 80, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,0.6)]"
-            />
-          </div>
-          <span className="text-[9px] tracking-[0.5em] uppercase text-gray-500 [writing-mode:vertical-lr] font-bold">Scroll</span>
-        </div>
-      </motion.div>
-
-      {/* Bottom Right Stats Box Animation */}
-      <motion.div 
-        variants={revealVariants}
-        custom={0.3}
+        custom={1.3}
         className="absolute bottom-12 right-12 z-20 hidden lg:flex bg-black/60 backdrop-blur-2xl border border-white/10 rounded-sm overflow-hidden text-white shadow-2xl"
       >
         <div className="flex flex-col justify-center px-10 py-8 border-r border-white/5">
           <span className="text-4xl font-light mb-2 tracking-tighter">
-            <CountUpNumber value={250} suffix="+" delay={1} />
+            <CountUpNumber value={250} suffix="+" delay={1.8} />
           </span>
           <span className="text-[9px] tracking-[0.3em] text-gray-400 uppercase font-bold leading-tight">Projects<br/>Delivered</span>
         </div>
 
         <div className="flex flex-col justify-center px-10 py-8 border-r border-white/5">
           <span className="text-4xl font-light mb-2 tracking-tighter">
-            <CountUpNumber value={20} suffix="M+" delay={1.2} />
+            <CountUpNumber value={20} suffix="M+" delay={2.0} />
           </span>
           <span className="text-[9px] tracking-[0.3em] text-gray-400 uppercase font-bold leading-tight">Sq Ft<br/>Built</span>
         </div>
 
         <div className="flex flex-col justify-center px-10 py-8 border-r border-white/5">
           <span className="text-4xl font-light mb-2 tracking-tighter">
-            <CountUpNumber value={98} suffix="%" delay={1.4} />
+            <CountUpNumber value={98} suffix="%" delay={2.2} />
           </span>
           <span className="text-[9px] tracking-[0.3em] text-gray-400 uppercase font-bold leading-tight">Client<br/>Satisfaction</span>
         </div>
