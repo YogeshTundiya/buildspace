@@ -23,7 +23,7 @@ const CountUpNumber = ({ value, suffix = "", delay = 0 }: { value: number; suffi
 };
 
 const Hero = () => {
-  const heroRef = useRef(null);
+  const heroRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -38,7 +38,7 @@ const Hero = () => {
     visible: (custom: number) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 1, delay: custom, ease: [0.76, 0, 0.24, 1] }
+      transition: { duration: 1, delay: custom, ease: [0.76, 0, 0.24, 1] as const }
     })
   };
 
@@ -47,7 +47,7 @@ const Hero = () => {
     visible: (custom: number) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 1.2, delay: custom, ease: [0.76, 0, 0.24, 1] }
+      transition: { duration: 1.2, delay: custom, ease: [0.76, 0, 0.24, 1] as const }
     })
   };
 
@@ -62,7 +62,7 @@ const Hero = () => {
       <motion.div 
         layoutId="hero-background"
         className="absolute inset-0 z-0 overflow-hidden bg-black"
-        transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1] }}
+        transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1] as const }}
       >
         <motion.img 
           src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2940&auto=format&fit=crop"
