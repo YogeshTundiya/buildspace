@@ -1,0 +1,50 @@
+[2026-05-07T06:28:56.792Z] [INFO] [build-script] === Build Started ===
+  Data: {
+  "cwd": "/home/yogesh/Documents/myproject/buildspace1/website"
+}
+[2026-05-07T06:28:56.798Z] [SUCCESS] [build-script] Project structure file generated
+  Data: {
+  "file": "/home/yogesh/Documents/myproject/buildspace1/website/build-info/structure.json"
+}
+[2026-05-07T06:28:56.800Z] [INFO] [build-script] Running npm run lint...
+[2026-05-07T06:29:34.727Z] [SUCCESS] [build-script] Lint passed
+[2026-05-07T06:29:34.728Z] [INFO] [build-script] Running npm run build...
+[2026-05-07T06:31:24.886Z] [SUCCESS] [build-script] Build succeeded
+[2026-05-07T06:31:24.901Z] [SUCCESS] [build-script] === Build Completed in 148.11s ===
+  Data: {
+  "duration": "148.11"
+}
+[2026-05-07T06:31:38.687Z] [SUCCESS] [update-script] Structure updated
+  Data: {
+  "file": "/home/yogesh/Documents/myproject/buildspace1/website/build-info/structure.json",
+  "components": 4,
+  "sections": 5
+}
+[2026-05-07T06:32:26.947Z] [INFO] [build-script] === Build Started ===
+  Data: {
+  "cwd": "/home/yogesh/Documents/myproject/buildspace1/website"
+}
+[2026-05-07T06:32:26.956Z] [SUCCESS] [build-script] Structure file generated
+  Data: {
+  "file": "/home/yogesh/Documents/myproject/buildspace1/website/build-info/structure.json"
+}
+[2026-05-07T06:32:26.956Z] [INFO] [build-script] Running npm run lint...
+[2026-05-07T06:33:15.799Z] [SUCCESS] [build-script] Lint passed
+[2026-05-07T06:33:15.799Z] [INFO] [build-script] Running npm run build...
+[2026-05-07T06:35:12.212Z] [SUCCESS] [build-script] Build succeeded
+[2026-05-07T06:35:12.213Z] [SUCCESS] [build-script] === Build Completed in 165.26s ===
+  Data: {
+  "duration": "165.26"
+}
+[2026-05-07T06:47:25.448Z] [INFO] [build-script] === Build Started ===
+  Data: {
+  "cwd": "/home/yogesh/Documents/myproject/buildspace1/website"
+}
+[2026-05-07T06:47:25.456Z] [SUCCESS] [build-script] Structure file generated
+  Data: {
+  "file": "/home/yogesh/Documents/myproject/buildspace1/website/build-info/structure.json"
+}
+[2026-05-07T06:47:25.456Z] [INFO] [build-script] Running npm run lint...
+[2026-05-07T06:47:43.200Z] [SUCCESS] [build-script] Lint passed
+[2026-05-07T06:47:43.200Z] [INFO] [build-script] Running npm run build...
+[2026-05-07T06:56:03.335Z] [SUCCESS] [update-script] Structure updated. components=4, sections=5

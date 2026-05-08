@@ -1,0 +1,47 @@
+{
+  "lastUpdated": "2026-05-07T06:56:03.191Z",
+  "directories": [
+    "app/",
+    "components/",
+    "sections/",
+    "lib/",
+    "logs/",
+    "public/",
+    "build-info/",
+    "scripts/"
+  ],
+  "keyFiles": [
+    "app/layout.tsx",
+    "app/page.tsx",
+    "app/globals.css",
+    "package.json",
+    "tsconfig.json",
+    "next.config.ts"
+  ],
+  "configFiles": [
+    "tsconfig.json",
+    "next.config.ts",
+    "postcss.config.mjs",
+    "eslint.config.mjs"
+  ],
+  "components": [
+    "Button.tsx",
+    "GlassCard.tsx",
+    "Navbar.tsx",
+    "SmoothScrollProvider.tsx"
+  ],
+  "sections": [
+    "Footer.tsx",
+    "Hero.tsx",
+    "Insights.tsx",
+    "Projects.tsx",
+    "Services.tsx"
+  ],
+  "lib": [
+    "logger.ts"
+  ],
+  "scripts": [
+    "build.js",
+    "update-structure.js"
+  ]
+}
