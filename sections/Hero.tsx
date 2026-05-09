@@ -38,22 +38,22 @@ const Hero = () => {
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
 
   return (
-    <div 
+    <div
       ref={heroRef}
       className="relative min-h-screen bg-[#050505] text-white font-sans overflow-hidden"
     >
       {/* THE TRANSITION: Horizontal Expanding Rectangular Mask */}
       {/* Starts as a thin horizontal slit in the middle (50% from top and bottom) */}
-      <motion.div 
-        initial={{ clipPath: "inset(50% 15% 50% 15%)" }} 
-        animate={{ clipPath: "inset(0% 0% 0% 0%)" }}   
+      <motion.div
+        initial={{ clipPath: "inset(50% 15% 50% 15%)" }}
+        animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
         transition={{ duration: 1.8, delay: 0.5, ease: [0.76, 0, 0.24, 1] as const }}
         className="absolute inset-0 bg-cover bg-center z-0"
-        style={{ 
+        style={{
           y: backgroundY,
           backgroundImage: `url("${HERO_IMAGE_URL}")`,
-          height: "120%", 
-          top: "-10%" 
+          height: "120%",
+          top: "-10%"
         }}
       >
         {/* Dark gradient overlay to ensure Navbar and text are always perfectly visible */}
@@ -61,21 +61,21 @@ const Hero = () => {
       </motion.div>
 
       {/* Main Hero Content Area - Beautiful layout structure */}
-      <motion.main 
+      <motion.main
         style={{ y: textY }}
         className="relative z-10 w-full h-screen max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24 flex flex-col justify-between pt-32 pb-12 pointer-events-none"
       >
         {/* Top Content: Main Title Split */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between w-full mt-10 md:mt-20 pointer-events-auto overflow-visible pb-4">
-          
+
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.5, delay: 0.8, ease: [0.76, 0, 0.24, 1] as const }}
           >
             <h1 className="text-[11vw] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] leading-[0.95] md:leading-[0.9] font-light tracking-tighter uppercase">
-              Build Space <br />
-              <span className="font-serif italic text-white/70 text-[10vw] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[8rem]">Living</span>
+              Spaces That <br />
+              <span className="font-serif italic text-white/70 text-[10vw] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[8rem]">Drive</span>
             </h1>
           </motion.div>
 
@@ -87,7 +87,7 @@ const Hero = () => {
             className="mt-4 lg:mt-0 text-left lg:text-right"
           >
             <h2 className="text-[8vw] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[5rem] leading-none font-medium tracking-tight uppercase">
-              Experiences
+              Possibility
             </h2>
           </motion.div>
 
@@ -95,9 +95,9 @@ const Hero = () => {
 
         {/* Bottom Content: Description, Button, and Stats */}
         <div className="flex flex-col lg:flex-row justify-between items-end w-full gap-10 pointer-events-auto">
-          
+
           {/* Left Info & Button */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 2.2, ease: "easeOut" }}
@@ -107,8 +107,8 @@ const Hero = () => {
               We build high-performance spaces and manage facilities that empower people, elevate businesses, and transform communities.
             </p>
 
-            <a 
-              href="#" 
+            <a
+              href="#"
               data-cursor-hover
               data-cursor-text="EXPLORE"
               className="group flex items-center gap-6 text-[11px] font-bold tracking-[0.3em] uppercase w-max text-white/90 hover:text-white transition-all"
@@ -124,7 +124,7 @@ const Hero = () => {
           </motion.div>
 
           {/* Right Stats Box */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 2.5, ease: "easeOut" }}
@@ -144,7 +144,7 @@ const Hero = () => {
               <span className="text-[9px] tracking-[0.3em] text-gray-400 uppercase font-bold leading-tight">Sq Ft</span>
             </div>
 
-            <button 
+            <button
               data-cursor-hover
               data-cursor-text="PLAY"
               className="flex items-center justify-center px-8 py-6 hover:bg-white/10 transition-all group gap-4"
