@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Zap, Globe, Target } from 'lucide-react';
+import Image from 'next/image';
 
 const stats = [
   {
@@ -62,7 +63,7 @@ const FeatureDashboard = () => {
               transition={{ duration: 1, delay: 0.3 }}
               className="text-white/60 text-sm md:text-base leading-relaxed max-w-md font-light"
             >
-              We don't just build; we optimize. Our integrated approach combines physical excellence with digital intelligence to ensure your assets perform at their peak.
+              We don&apos;t just build; we optimize. Our integrated approach combines physical excellence with digital intelligence to ensure your assets perform at their peak.
             </motion.p>
           </div>
         </div>
@@ -111,10 +112,11 @@ const FeatureDashboard = () => {
           transition={{ duration: 1.2 }}
           className="mt-24 w-full h-[400px] relative overflow-hidden rounded-sm group"
         >
-          <img 
+          <Image 
             src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop" 
             alt="Technical Precision"
-            className="w-full h-full object-cover grayscale opacity-40 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-1000"
+            fill
+            className="object-cover grayscale opacity-40 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-1000"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
           

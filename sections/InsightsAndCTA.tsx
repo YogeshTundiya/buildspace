@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 const insightsData = [
   {
@@ -80,11 +81,12 @@ const InsightsAndCTA = () => {
                 data-cursor-text="READ"
                 className="flex flex-col group cursor-pointer"
               >
-                <div className="w-full aspect-[16/10] overflow-hidden mb-6 bg-gray-200">
-                  <img 
+                <div className="relative w-full aspect-[16/10] overflow-hidden mb-6 bg-gray-200">
+                  <Image 
                     src={item.image} 
                     alt={item.title} 
-                    className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                    fill
+                    className="object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                   />
                 </div>
                 
@@ -139,13 +141,13 @@ const InsightsAndCTA = () => {
             </motion.div>
             
             <h2 className="text-3xl md:text-4xl font-light tracking-tight leading-tight">
-              Ready to build<br /><span className="italic text-white/60">what's next?</span>
+              Ready to build<br /><span className="italic text-white/60">what&apos;s next?</span>
             </h2>
           </div>
 
           <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 w-full lg:w-auto justify-end">
             <p className="text-white/50 text-xs font-light max-w-[200px]">
-              Let's create spaces that drive your business forward.
+              Let&apos;s create spaces that drive your business forward.
             </p>
             
             <button 
@@ -153,7 +155,7 @@ const InsightsAndCTA = () => {
               data-cursor-text="CONTACT"
               className="flex-shrink-0 flex items-center gap-4 border border-white/30 px-8 py-5 text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all group/btn"
             >
-              Let's Connect
+              Let&apos;s Connect
               <ArrowRight size={14} className="font-light transform group-hover/btn:translate-x-1 transition-transform" />
             </button>
           </div>

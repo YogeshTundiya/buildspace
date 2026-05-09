@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 const projectsData = [
   {
@@ -87,10 +88,11 @@ const Projects = () => {
               data-cursor-text="VIEW"
               className="relative group w-full aspect-[4/5] bg-[#111] overflow-hidden cursor-pointer"
             >
-              <img 
+              <Image 
                 src={project.image} 
                 alt={project.title}
-                className="absolute inset-0 w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+                fill
+                className="object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
               />
               
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />

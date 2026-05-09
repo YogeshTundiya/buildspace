@@ -21,9 +21,8 @@ const CustomCursor = () => {
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     if (isTouch) return;
 
-    setIsVisible(true);
-
     const moveCursor = (e: MouseEvent) => {
+      setIsVisible(true);
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
     };

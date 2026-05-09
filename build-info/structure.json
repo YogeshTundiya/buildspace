@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-07T06:56:03.191Z",
+  "lastUpdated": "2026-05-09T05:19:20.780Z",
   "directories": [
     "app/",
     "components/",
@@ -26,6 +26,8 @@
   ],
   "components": [
     "Button.tsx",
+    "CustomCursor.tsx",
+    "FeatureDashboard.tsx",
     "GlassCard.tsx",
     "Navbar.tsx",
     "SmoothScrollProvider.tsx"
@@ -33,7 +35,7 @@
   "sections": [
     "Footer.tsx",
     "Hero.tsx",
-    "Insights.tsx",
+    "InsightsAndCTA.tsx",
     "Projects.tsx",
     "Services.tsx"
   ],
