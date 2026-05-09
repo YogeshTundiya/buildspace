@@ -19,7 +19,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8 mb-16">
           
           {/* Brand Column */}
-          <div className="lg:col-span-2 flex flex-col pr-8">
+          <div className="lg:col-span-2 flex flex-col lg:pr-8 mb-8 lg:mb-0">
             <div className="flex items-center gap-3 mb-6">
               <div className="flex items-center justify-center w-8 h-8 border-2 border-white">
                 <div className="w-1/2 h-full border-r-2 border-white flex flex-col justify-end">
@@ -92,11 +92,13 @@ const Footer = () => {
 
         {/* Bottom Legal Bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col lg:flex-row justify-between items-center gap-6 text-[11px] text-gray-500">
-          <p>© 2024 Build Space. All rights reserved.</p>
+          <p className="text-center lg:text-left">© 2024 Build Space. All rights reserved.</p>
           
-          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Use</a>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+            <div className="flex items-center gap-4">
+              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-white transition-colors">Terms of Use</a>
+            </div>
             <span className="hidden md:inline text-gray-700">|</span>
             <span className="text-gray-300 font-medium tracking-wide">
               Developed by <a href="#" className="text-white hover:underline transition-all">Codex Infotech</a>

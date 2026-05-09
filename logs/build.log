@@ -64,3 +64,48 @@
   Data: {
   "duration": "174.59"
 }
+[2026-05-09T05:34:08.138Z] [INFO] [build-script] === Build Started ===
+  Data: {
+  "cwd": "/home/yogesh/Documents/myproject/buildspace1/website"
+}
+[2026-05-09T05:34:08.142Z] [SUCCESS] [build-script] Structure file generated
+  Data: {
+  "file": "/home/yogesh/Documents/myproject/buildspace1/website/build-info/structure.json"
+}
+[2026-05-09T05:34:08.143Z] [INFO] [build-script] Running npm run lint...
+[2026-05-09T05:34:22.429Z] [ERROR] [build-script] === Build Failed ===
+  Data: {
+  "error": "Command failed: npm run lint"
+}
+[2026-05-09T05:35:23.822Z] [INFO] [build-script] === Build Started ===
+  Data: {
+  "cwd": "/home/yogesh/Documents/myproject/buildspace1/website"
+}
+[2026-05-09T05:35:23.826Z] [SUCCESS] [build-script] Structure file generated
+  Data: {
+  "file": "/home/yogesh/Documents/myproject/buildspace1/website/build-info/structure.json"
+}
+[2026-05-09T05:35:23.826Z] [INFO] [build-script] Running npm run lint...
+[2026-05-09T05:35:39.432Z] [SUCCESS] [build-script] Lint passed
+[2026-05-09T05:35:39.434Z] [INFO] [build-script] Running npm run build...
+[2026-05-09T05:36:46.957Z] [SUCCESS] [build-script] Build succeeded
+[2026-05-09T05:36:46.958Z] [SUCCESS] [build-script] === Build Completed in 83.14s ===
+  Data: {
+  "duration": "83.14"
+}
+[2026-05-09T05:37:11.671Z] [INFO] [build-script] === Build Started ===
+  Data: {
+  "cwd": "/home/yogesh/Documents/myproject/buildspace1/website"
+}
+[2026-05-09T05:37:11.680Z] [SUCCESS] [build-script] Structure file generated
+  Data: {
+  "file": "/home/yogesh/Documents/myproject/buildspace1/website/build-info/structure.json"
+}
+[2026-05-09T05:37:11.680Z] [INFO] [build-script] Running npm run lint...
+[2026-05-09T05:37:26.736Z] [SUCCESS] [build-script] Lint passed
+[2026-05-09T05:37:26.736Z] [INFO] [build-script] Running npm run build...
+[2026-05-09T05:38:34.443Z] [SUCCESS] [build-script] Build succeeded
+[2026-05-09T05:38:34.443Z] [SUCCESS] [build-script] === Build Completed in 82.77s ===
+  Data: {
+  "duration": "82.77"
+}

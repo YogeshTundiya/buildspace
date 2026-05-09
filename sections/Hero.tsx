@@ -66,17 +66,16 @@ const Hero = () => {
         className="relative z-10 w-full h-screen max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24 flex flex-col justify-between pt-32 pb-12 pointer-events-none"
       >
         {/* Top Content: Main Title Split */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between w-full mt-10 md:mt-20 pointer-events-auto overflow-hidden pb-4">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between w-full mt-10 md:mt-20 pointer-events-auto overflow-visible pb-4">
           
-          {/* Left Title - SLIDING IN FROM LEFT (Original Animation) */}
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.5, delay: 0.8, ease: [0.76, 0, 0.24, 1] as const }}
           >
-            <h1 className="text-6xl md:text-8xl lg:text-[9rem] leading-[0.9] font-light tracking-tighter uppercase">
+            <h1 className="text-[11vw] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] leading-[0.95] md:leading-[0.9] font-light tracking-tighter uppercase">
               Build Space <br />
-              <span className="font-serif italic text-white/70 text-5xl md:text-7xl lg:text-[8rem]">Living</span>
+              <span className="font-serif italic text-white/70 text-[10vw] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[8rem]">Living</span>
             </h1>
           </motion.div>
 
@@ -85,9 +84,9 @@ const Hero = () => {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.5, delay: 1.4, ease: [0.76, 0, 0.24, 1] as const }}
-            className="mt-6 md:mt-0 text-left md:text-right"
+            className="mt-4 lg:mt-0 text-left lg:text-right"
           >
-            <h2 className="text-4xl md:text-6xl lg:text-[5rem] leading-none font-medium tracking-tight uppercase">
+            <h2 className="text-[8vw] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[5rem] leading-none font-medium tracking-tight uppercase">
               Experiences
             </h2>
           </motion.div>
@@ -102,9 +101,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 2.2, ease: "easeOut" }}
-            className="flex flex-col gap-8 max-w-md"
+            className="flex flex-col gap-6 md:gap-8 max-w-md w-full"
           >
-            <p className="text-gray-300 text-sm md:text-base leading-relaxed font-medium opacity-80">
+            <p className="text-gray-300 text-sm md:text-base leading-relaxed font-medium opacity-80 max-w-[280px] sm:max-w-none">
               We build high-performance spaces and manage facilities that empower people, elevate businesses, and transform communities.
             </p>
 

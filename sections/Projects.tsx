@@ -1,7 +1,7 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
@@ -27,6 +27,73 @@ const projectsData = [
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop"
   }
 ];
+
+interface Project {
+  title: string;
+  category: string;
+  image: string;
+}
+
+const ProjectCard = ({ project, index }: { project: Project, index: number }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"]
+  });
+  
+  // Parallax effect for the image inside the card
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+
+  return (
+    <motion.div 
+      ref={cardRef}
+      initial={{ opacity: 0, scale: 0.95, y: 30 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.1 }}
+      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.76, 0, 0.24, 1] }}
+      data-cursor-hover
+      data-cursor-text="VIEW"
+      className="relative group w-full h-[450px] sm:h-[500px] md:h-auto md:aspect-[4/5] bg-[#111] overflow-hidden cursor-pointer"
+    >
+      <motion.div 
+        style={{ y: imageY, height: "130%", top: "-15%" }} 
+        className="absolute inset-0 w-full"
+      >
+        <Image 
+          src={project.image} 
+          alt={project.title}
+          fill
+          className="object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 md:group-hover:scale-105 transition-all duration-1000"
+        />
+      </motion.div>
+      
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+
+      <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 flex flex-col pointer-events-none z-10">
+        <h3 className="text-white text-base md:text-xs font-bold tracking-[0.15em] uppercase mb-4 transform group-hover:-translate-y-2 transition-all duration-500">
+          {project.title}
+        </h3>
+        
+        <div className="flex items-center justify-between border-t border-white/10 pt-4 overflow-hidden">
+          <p className="text-[11px] md:text-[9px] font-bold tracking-[0.2em] text-gray-500 uppercase">
+            {project.category}
+          </p>
+          <motion.div
+            initial={{ x: -20, opacity: 0 }}
+            whileHover={{ x: 0, opacity: 1 }}
+            className="flex items-center gap-2"
+          >
+            <ArrowRight 
+              size={16} 
+              className="text-white transform -translate-x-4 group-hover:translate-x-0 transition-all duration-500" 
+            />
+          </motion.div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const Projects = () => {
   return (
@@ -76,49 +143,9 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-4 lg:gap-6 mb-32">
           {projectsData.map((project, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.76, 0, 0.24, 1] }}
-              data-cursor-hover
-              data-cursor-text="VIEW"
-              className="relative group w-full aspect-[4/5] bg-[#111] overflow-hidden cursor-pointer"
-            >
-              <Image 
-                src={project.image} 
-                alt={project.title}
-                fill
-                className="object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
-              />
-              
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
-
-              <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col pointer-events-none z-10">
-                <h3 className="text-white text-xs font-bold tracking-[0.15em] uppercase mb-4 transform group-hover:-translate-y-2 transition-all duration-500">
-                  {project.title}
-                </h3>
-                
-                <div className="flex items-center justify-between border-t border-white/10 pt-4 overflow-hidden">
-                  <p className="text-[9px] font-bold tracking-[0.2em] text-gray-500 uppercase">
-                    {project.category}
-                  </p>
-                  <motion.div
-                    initial={{ x: -20, opacity: 0 }}
-                    whileHover={{ x: 0, opacity: 1 }}
-                    className="flex items-center gap-2"
-                  >
-                    <ArrowRight 
-                      size={14} 
-                      className="text-white transform -translate-x-4 group-hover:translate-x-0 transition-all duration-500" 
-                    />
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
+            <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>
 
