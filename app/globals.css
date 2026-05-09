@@ -9,6 +9,7 @@
   --color-accent: #5850EC;
 
   --font-sans: "Inter", sans-serif;
+  --font-serif: var(--font-dm-serif), serif;
 
   --spacing-hero: 240px;
   --spacing-large: 160px;
